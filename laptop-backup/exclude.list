@@ -1,0 +1,5 @@
+/home/*/.cache/*
+/home/*/.mozilla/*
+/var/cache/*
+/var/tmp/*
+/var/lightdm/*

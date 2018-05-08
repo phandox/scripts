@@ -1,0 +1,2 @@
+PASSFILE='/home/lukas/borg_backup_passfile'
+EXCLUDE_FILE='/usr/local/share/system_scripts/sysbackup/exclude.list'

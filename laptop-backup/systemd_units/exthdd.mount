@@ -1,0 +1,6 @@
+[Unit]
+Description="Mounting USB external drive in dockstation"
+
+[Mount]
+What=/dev/disk/by-uuid/cf83d363-2023-421e-a2b6-761d8cc9a1fb
+Where=/exthdd/
