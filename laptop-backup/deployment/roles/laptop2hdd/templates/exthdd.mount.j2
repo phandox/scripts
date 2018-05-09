@@ -1,0 +1,6 @@
+[Unit]
+Description="Mounting USB external drive in dockstation"
+
+[Mount]
+What=/dev/disk/by-uuid/{{ exthdd_drive_uuid }}
+Where=/{{ exthdd_mount_name }}/

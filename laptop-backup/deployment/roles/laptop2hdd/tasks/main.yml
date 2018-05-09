@@ -1,0 +1,38 @@
+---
+  - name: Copy backup script and env to backup scripts directory (will be created if doesn't exist)
+    copy:
+      src: borg_backup.sh
+      dest: '{{ backup_scripts_dir }}/'
+    become: yes
+
+  - name: Create environmnet file for unit and copy to backup script
+    template:
+      src: backup_env.j2
+      dest: '{{ backup_scripts_dir }}/backup_env'
+      owner: root
+    become: yes
+
+  - name: Create systemd units and copy them to systemd location
+    template:
+      src: "{{ item.template }}"
+      dest: '/etc/systemd/system/{{ item.dest }}'
+      owner: root
+    loop:
+      - { template: 'borg_backup.service.j2', dest: 'borg_backup.service' }
+      - { template: 'borg_backup.timer.j2', dest: 'borg_backup.timer' }
+      - { template: '{{ exthdd_mount_name }}.automount.j2', dest: '{{ exthdd_mount_name }}.automount' }
+      - { template: '{{ exthdd_mount_name }}.mount.j2', dest: '{{ exthdd_mount_name }}.mount' }
+    become: yes
+  
+  - name: Enable automounting drive and timer on backup
+    systemd:
+      name: "{{ item }}"
+      enabled: yes
+      state: started
+      daemon_reload: yes
+    loop:
+      - borg_backup.timer
+      - "{{ exthdd_mount_name }}.automount"
+    become: yes
+
+    

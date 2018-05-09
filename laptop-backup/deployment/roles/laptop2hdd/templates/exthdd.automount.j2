@@ -1,0 +1,10 @@
+[Unit]
+Description="Automounting of USB External HDD"
+
+[Automount]
+Where=/{{ exthdd_mount_name }}
+TimeoutIdleSec=5min
+
+[Install]
+WantedBy=local-fs.target
+RequiredBy=borg_backup.service

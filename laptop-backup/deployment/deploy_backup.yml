@@ -1,0 +1,8 @@
+---
+- name: Deploy backup scripts on local machine
+  hosts: localhost
+  connection: local
+  
+  roles:
+    - laptop2hdd
+...

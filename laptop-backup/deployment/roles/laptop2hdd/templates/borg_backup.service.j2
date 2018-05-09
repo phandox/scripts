@@ -1,0 +1,10 @@
+[Unit]
+Description="Backup the personal files, using Borg Backup"
+Requires={{ exthdd_mount_name }}.automount
+
+[Service]
+EnvironmentFile={{ backup_scripts_dir }}/backup_env
+StandardOutput=journal
+StandardError=inherit
+Type=oneshot
+ExecStart={{ backup_scripts_dir }}/borg_backup.sh

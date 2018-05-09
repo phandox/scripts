@@ -1,0 +1,10 @@
+backup_scripts_dir: '/usr/local/share/system_scripts/sysbackup'
+exthdd_mount_name: 'exthdd'
+exthdd_drive_uuid:  "cf83d363-2023-421e-a2b6-761d8cc9a1fb"
+backup_time: 'Sun *-*-* 19:00:00'
+
+
+unit_env:
+  BORG_REPOSITORY: '/{{ exthdd_mount_name }}/borg_backup/'
+  PASSFILE: '/home/lukas/borg_backup_passfile'
+  EXCLUDE_FILE: '{{ backup_scripts_dir }}/exclude.list'

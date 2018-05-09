@@ -2,7 +2,7 @@
 
 set -e # Exit on non-zero return
 # Setting this, so the repo does not need to be given on the commandline:
-export BORG_REPO='/exthdd/borg_backup/'
+export BORG_REPO="${BORG_REPOSITORY:?}"
 
 # or this to ask an external program to supply the passphrase:
 export BORG_PASSCOMMAND="cat ${PASSFILE:?}" # Will exit if PASSFILE is not set

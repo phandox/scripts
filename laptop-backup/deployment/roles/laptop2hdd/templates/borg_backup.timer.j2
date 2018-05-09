@@ -1,0 +1,9 @@
+[Unit]
+Description="Run laptop backup every week"
+
+[Timer]
+OnCalendar={{ backup_time }}
+Persistent=true
+
+[Install]
+WantedBy=timers.target
