@@ -3,6 +3,9 @@
     copy:
       src: borg_backup.sh
       dest: '{{ backup_scripts_dir }}/'
+    loop:
+      - borg_backup.sh
+      - exclude.list
     become: yes
 
   - name: Create environmnet file for unit and copy to backup script
